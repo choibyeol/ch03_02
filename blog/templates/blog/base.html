@@ -17,24 +17,11 @@
   <div class="content container">
     <div class="row">
       <div class="col-md-8">
-        {% for post in posts %}
-        <div class="post">
-          <div class="date">
-            <p>published: {{ post.published_date }}</p>
-          </div>
-          <h1><a href="">{{ post.title }}</a></h1>
-          <p>{{ post.text|linebreaksbr }}</p>
-        </div>
-        {% endfor %}
+        {% block content %}
+        {% endblock %}
+        <!-- post_list.html에 있는 block content가 들어가게 될 것. -->
       </div>
     </div>
   </div>
-
-  <p style="margin-left:50px;">
-    <video muted autoplay loop>
-      <source src="{% static '실습.mp4' %}" type="video/mp4">
-    </video>
-  </p>
-
 </body>
 </html>

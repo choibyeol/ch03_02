@@ -1,4 +1,5 @@
 {% extends 'blog/base.html' %}
+<!-- 기반이 되는 코드는 base.html이다. -->
 
 {% block content %}
   {% for post in posts %}
@@ -6,7 +7,10 @@
       <div class="date">
         {{ post.published_date }}
       </div>
-      <h1><a href="">{{ post.title }}</a></h1>
+      <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+    <!-- post.title에 url을 생성할 것임. post.title은 views.py 파일의 렌더 함수에서
+    post 객체를 가져와서 넘겨줬음. title에 url링크가 생기는데 이 링크를 만들어주는 주체는 장고.
+    즉, 서버 사이드에서 url을 만들어서 html을 생성시켜줌.  -->
       <p>{{ post.text|linebreaksbr }}</p>
     </div>
   {% endfor %}
